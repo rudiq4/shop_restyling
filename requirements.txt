@@ -1,0 +1,4 @@
+Django==2.1.5
+pytz==2018.9
+virtualenv==16.4.0
+virtualenvwrapper-win==1.2.5
