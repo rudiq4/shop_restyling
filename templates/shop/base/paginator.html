@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
 
-</body>
-</html>
+<nav aria-label="Page navigation">
+    {% if page.has_other_pages %}
+        <ul class="pagination">
+            {% if page.has.previous %}
+                <li><a aria-label="Previous" href="
+                ?page={{ page.previous_page_number }}">&laquo;</a>
+                </li>
+            {% else %}
+                <li class="disabled"><span>&laquo;</span>
+            {% endif %}
+            {% for pages in page.paginator.page_range %}
+                {% if page.number == pages %}
+                    <li class="active"><span>{{ pages }}<span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li><a href="?page={{ pages }}">{{ pages }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if page.has_next %}
+                <li><a href="?page={{ page.next_page_number }}">&raquo;</a></li>
+            {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+</nav>
+
+{#            <div class="aa-product-catg-pagination">#}
+{#              <nav>#}
+{#                <ul class="pagination">#}
+{#                  <li>#}
+{#                    <a href="#" aria-label="Previous">#}
+{#                      <span aria-hidden="true">&laquo;</span>#}
+{#                    </a>#}
+{#                  </li>#}
+{#                  <li><a href="#">1</a></li>#}
+{#                  <li><a href="#">2</a></li>#}
+{#                  <li><a href="#">3</a></li>#}
+{#                  <li><a href="#">4</a></li>#}
+{#                  <li><a href="#">5</a></li>#}
+{#                  <li>#}
+{#                    <a href="#" aria-label="Next">#}
+{#                      <span aria-hidden="true">&raquo;</span>#}
+{#                    </a>#}
+{#                  </li>#}
+{#                </ul>#}
+{#              </nav>#}
+{#            </div>#}

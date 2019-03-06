@@ -1,10 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'shop/base/base.html' %}
 
-</body>
-</html>
+{% load static %}
+{% block title %}
+    {% if category %} {{ category.name }} {% else %} Головна {% endif %}
+{% endblock %}
+{% block content %}
+    <!-- catg header banner section -->
+    <section id="aa-catg-head-banner">
+        <img src="{% static 'images/bg.jpg' %}" alt="fashion img">
+        <div class="aa-catg-head-banner-area">
+            <div class="container">
+                <div class="aa-catg-head-banner-content">
+                    <h2>{% if category %}{{ category.name }}{% else %}Всі{% endif %}</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / catg header banner section -->
+
+    <!-- product category -->
+    <section id="aa-product-category">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
+                    <div class="aa-product-catg-content">
+                        <div class="aa-product-catg-head">
+                            <div class="aa-product-catg-head-left">
+                                <span>Ви можете змінити вид товарів за допомогою цих кнопок -> </span>
+                            </div>
+                            <div class="aa-product-catg-head-right">
+                                <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
+                                <a id="list-catg" href="#"><span class="fa fa-list"></span></a>
+                            </div>
+                        </div>
+                        <div class="aa-product-catg-body">
+                            <ul class="aa-product-catg">
+                                <!-- start single product item -->
+                                {% for product in products %}
+                                    <li>
+                                        <figure>
+                                            <a class="aa-product-img" href="{{ product.get_absolute_url }}"><img src="
+
+
+
+                                                    {% if product.image %}{{ product.image.url }}{% else %}{% static "" %}{% endif %}"
+                                                                                                                 alt="polo shirt img"
+                                                                                                                 class="rudik"></a>
+                                            <a class="aa-add-card-btn" href="#"><span
+                                                    class="fa fa-shopping-cart"></span>
+                                                Деталі</a>
+                                            <figcaption>
+                                                <h4 class="aa-product-title"><a href="#">{{ product.name }}</a></h4>
+                                                <span class="aa-product-price">{{ product.price }}</span>
+                                                <p class="aa-product-descrip">{{ product.short_description }}</p>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-12 paginators">
+                        {% include 'shop/base/paginator.html' with page=products %}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
+                    <aside class="aa-sidebar">
+                        <!-- single sidebar -->
+                        <div class="aa-sidebar-widget">
+                            <h3>Категорії</h3>
+                            <ul class="aa-catg-nav">
+                                <li {% if not category %} class="selected" {% endif %}>
+                                    <a href="{% url "shop:ProductList" %}">Всі</a>
+                                </li>
+                                {% for cat in categories %}
+                                    <li {% if category.slug == cat.slug %} class="selected" {% endif %}>
+                                        <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!-- single sidebar -->
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / product category -->
+{% endblock %}
+
