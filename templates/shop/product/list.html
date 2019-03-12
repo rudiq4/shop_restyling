@@ -43,14 +43,15 @@
 
 
 
+
                                                     {% if product.image %}{{ product.image.url }}{% else %}{% static "" %}{% endif %}"
                                                                                                                  alt="polo shirt img"
                                                                                                                  class="rudik"></a>
-                                            <a class="aa-add-card-btn" href="#"><span
+                                            <a class="aa-add-card-btn" href="{{ product.get_absolute_url }}"><span
                                                     class="fa fa-shopping-cart"></span>
                                                 Деталі</a>
                                             <figcaption>
-                                                <h4 class="aa-product-title"><a href="#">{{ product.name }}</a></h4>
+                                                <h4 class="aa-product-title"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
                                                 <span class="aa-product-price">{{ product.price }}</span>
                                                 <p class="aa-product-descrip">{{ product.short_description }}</p>
                                             </figcaption>

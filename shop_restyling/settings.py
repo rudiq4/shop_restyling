@@ -1,8 +1,6 @@
 import os
 from secret import *
 
-
-
 DEBUG = True
 
 ALLOWED_HOSTS = []

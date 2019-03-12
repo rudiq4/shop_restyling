@@ -55,55 +55,44 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="aa-header-bottom-area">
-                        <!-- logo  -->
                         <div class="aa-logo">
-                            <!-- Text based logo -->
                             <a href="{% url "main:ProductList" %}">
                                 <span class="fa fa-shopping-cart"></span>
                                 <p>Штеп<strong>сель</strong> <span>єдиний норм магаз</span></p>
                             </a>
-                            <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+
                         </div>
-                        <!-- / logo  -->
                         <!-- cart box -->
                         <div class="aa-cartbox">
-                            <a class="aa-cart-link" href="#">
-                                <span class="fa fa-shopping-basket"></span>
-                                <span class="aa-cart-title">Корзина</span>
-                                <span class="aa-cart-notify">2</span>
-                            </a>
-                            <div class="aa-cartbox-summary">
-                                <ul>
-                                    <li>
-                                        <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg"
-                                                                                alt="img"></a>
-                                        <div class="aa-cartbox-info">
-                                            <h4><a href="#">Product Name</a></h4>
-                                            <p>1 x $250</p>
-                                        </div>
-                                        <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                                    </li>
-                                    <li>
-                                        <a class="aa-cartbox-img" href="#"><img src="img/woman-small-1.jpg"
-                                                                                alt="img"></a>
-                                        <div class="aa-cartbox-info">
-                                            <h4><a href="#">Product Name</a></h4>
-                                            <p>1 x $250</p>
-                                        </div>
-                                        <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                                    </li>
-                                    <li>
-                      <span class="aa-cartbox-total-title">
-                        Total
-                      </span>
-                                        <span class="aa-cartbox-total-price">
-                        $500
-                      </span>
-                                    </li>
-                                </ul>
-                                <a class="aa-cartbox-checkout aa-primary-btn" href="#">Checkout</a>
-                            </div>
+                            {% with total_items=cart|length %}
+                                <a class="aa-cart-link" href="{% url "cart:CartDetail" %}">
+                                    <span class="fa fa-shopping-basket"></span>
+                                    <span class="aa-cart-title">Кошик</span>
+                                    <span class="aa-cart-notify">{{ total_items }}</span>
+                                </a>
+                            {% endwith %}
+{#                            <div class="aa-cartbox-summary">#}
+{#                                <ul>#}
+{##}
+{#                                    <li>#}
+{#                                        <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg"#}
+{#                                                                                alt="img"></a>#}
+{#                                        <div class="aa-cartbox-info">#}
+{#                                            <h4><a href="#">Product Name</a></h4>#}
+{#                                            <p>1 x $250</p>#}
+{#                                        </div>#}
+{#                                        <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>#}
+{#                                        <span class="aa-cartbox-total-title">#}
+{#                        Total#}
+{#                      </span>#}
+{#                                        <span class="aa-cartbox-total-price">#}
+{#                        $500#}
+{#                      </span>#}
+{#                                    </li>#}
+{#                                    #}
+{#                                </ul>#}
+{#                                <a class="aa-cartbox-checkout aa-primary-btn" href="#">Checkout</a>#}
+{#                            </div>#}
                         </div>
                         <!-- / cart box -->
                         <!-- search box -->
@@ -142,7 +131,7 @@
                         <li><a href="{% url "main:ProductList" %}">Головна</a></li>
                         <li><a href="#">Блог</a></li>
                         <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Контакти</a></li>
+                        <li><a href="#">admin</a></li>
                         <li><a href="{% url "main:test" %}">TEST</a></li>
                         {#                        <li><a href="#">Blog <span class="caret"></span></a>#}
                         {#                            <ul class="dropdown-menu">#}
