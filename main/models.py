@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 
@@ -30,6 +30,7 @@ class Product(models.Model):
         Category,
         related_name='products',
         verbose_name='Категорія',
+        on_delete=models.CASCADE
     )
     name = models.CharField(
         max_length=256,
