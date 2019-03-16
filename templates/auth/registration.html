@@ -1,0 +1,20 @@
+{% extends "shop/base/base.html" %}
+{% load static %}
+{% block title %}
+    Реєстрація
+{% endblock %}
+{% block content %}
+    <div class="col-md-8 col-md-offset-2">
+        <div class="aa-myaccount-register">
+            <h4 class="text-center">Реєстрація</h4>
+            <form action="" method="POST" class="aa-login-form">
+                {{ form.error }}
+                <hr>
+                {% csrf_token %}
+                {{ form.as_ul }}
+                <button type="submit" class="aa-browse-btn">Зареєструватись</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

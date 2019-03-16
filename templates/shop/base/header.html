@@ -10,22 +10,6 @@
                     <div class="aa-header-top-area">
                         <!-- start header top left -->
                         <div class="aa-header-top-left">
-                            <!-- start language -->
-                            <div class="aa-language">
-                                <div class="dropdown">
-                                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <img src="{% static 'images/ua.jpg' %}" alt="english flag">Українська
-                                        <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#"><img src="{% static 'images/rus.jpg' %}" alt="">Русский</a></li>
-                                        <li><a href="#"><img src="{% static 'images/ua.jpg' %}" alt="">Українська</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- / language -->
                             <!-- start cellphone -->
                             <div class="cellphone">
                                 <p><span class="fa fa-phone"></span>+38(066)673-22-65</p>
@@ -35,11 +19,13 @@
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li><a href="#">Блог</a></li>
-                                <li class="hidden-xs"><a href="#">Контакти</a></li>
-                                {#                                <li class="hidden-xs"><a href="#">My Cart</a></li>#}
-                                {#                                <li class="hidden-xs"><a href="#">Checkout</a></li>#}
-                                <li><a href="" data-toggle="modal" data-target="#login-modal">Кабінет</a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><a href="" data-toggle="modal" data-target="#login-modal">{{ request.user.username }}</a></li>
+                                    <li><a href="" data-toggle="modal" data-target="#login-modal">Кабінет</a></li>
+                                {% else %}
+                                    <li><a href="#">Увійти</a></li>
+                                    <li><a href="{% url "customer:registration" %}">Реєстрація</a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -71,28 +57,28 @@
                                     <span class="aa-cart-notify">{{ total_items }}</span>
                                 </a>
                             {% endwith %}
-{#                            <div class="aa-cartbox-summary">#}
-{#                                <ul>#}
-{##}
-{#                                    <li>#}
-{#                                        <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg"#}
-{#                                                                                alt="img"></a>#}
-{#                                        <div class="aa-cartbox-info">#}
-{#                                            <h4><a href="#">Product Name</a></h4>#}
-{#                                            <p>1 x $250</p>#}
-{#                                        </div>#}
-{#                                        <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>#}
-{#                                        <span class="aa-cartbox-total-title">#}
-{#                        Total#}
-{#                      </span>#}
-{#                                        <span class="aa-cartbox-total-price">#}
-{#                        $500#}
-{#                      </span>#}
-{#                                    </li>#}
-{#                                    #}
-{#                                </ul>#}
-{#                                <a class="aa-cartbox-checkout aa-primary-btn" href="#">Checkout</a>#}
-{#                            </div>#}
+                            {#                            <div class="aa-cartbox-summary">#}
+                            {#                                <ul>#}
+                            {##}
+                            {#                                    <li>#}
+                            {#                                        <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg"#}
+                            {#                                                                                alt="img"></a>#}
+                            {#                                        <div class="aa-cartbox-info">#}
+                            {#                                            <h4><a href="#">Product Name</a></h4>#}
+                            {#                                            <p>1 x $250</p>#}
+                            {#                                        </div>#}
+                            {#                                        <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>#}
+                            {#                                        <span class="aa-cartbox-total-title">#}
+                            {#                        Total#}
+                            {#                      </span>#}
+                            {#                                        <span class="aa-cartbox-total-price">#}
+                            {#                        $500#}
+                            {#                      </span>#}
+                            {#                                    </li>#}
+                            {#                                    #}
+                            {#                                </ul>#}
+                            {#                                <a class="aa-cartbox-checkout aa-primary-btn" href="#">Checkout</a>#}
+                            {#                            </div>#}
                         </div>
                         <!-- / cart box -->
                         <!-- search box -->

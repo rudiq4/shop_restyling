@@ -3,7 +3,7 @@ from secret import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['d24074de.ngrok.io']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'main',
     'orders',
     'cart',
+    'customer',
 ]
 
 MIDDLEWARE = [
