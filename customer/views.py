@@ -3,7 +3,7 @@ from django import forms
 from .models import UserAccount
 from customer.forms import RegistrationForm, LoginForm
 from django.shortcuts import render
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.http import HttpResponseRedirect
 
 User = get_user_model()  #a
@@ -36,5 +36,28 @@ class RegistrationView(View):
                                        last_name=new_user.last_name,
                                        email=new_user.email)
             return HttpResponseRedirect('/')
+        context = {'form': form}
+        return render(self.request, self.template, context)
+
+
+class LoginView(View):
+    template = 'auth/login.html'
+
+    def get(self, request, *args, **kwargs):
+        form = LoginForm(request.POST or None)
+        context = {
+            'form': form
+        }
+        return render(self.request, self.template, context)
+
+    def post(self, request, *args, **kwargs):
+        form = LoginForm(request.POST or None)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user:
+                login(self.request, user)
+                return HttpResponseRedirect('/')
         context = {'form': form}
         return render(self.request, self.template, context)

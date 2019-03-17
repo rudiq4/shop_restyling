@@ -3,7 +3,7 @@ from secret import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['d24074de.ngrok.io']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',

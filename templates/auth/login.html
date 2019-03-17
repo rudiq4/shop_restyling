@@ -1,0 +1,20 @@
+{% extends "shop/base/base.html" %}
+{% load static %}
+{% block title %}
+    Авторизація
+{% endblock %}
+{% block content %}
+    <div class="col-md-8 col-md-offset-2">
+        <div class="aa-myaccount-login">
+            <h4 class="text-center">Авторизація користувача</h4>
+            <form action="" method="POST" class="aa-login-form">
+                {{ form.error }}
+                <hr>
+                {% csrf_token %}
+                {{ form.as_ul }}
+                <button type="submit" class="aa-browse-btn">Увійти</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

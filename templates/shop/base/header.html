@@ -20,10 +20,11 @@
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
                                 {% if request.user.is_authenticated %}
-                                    <li><a href="" data-toggle="modal" data-target="#login-modal">{{ request.user.username }}</a></li>
+                                    <li><a href="" data-toggle="modal"
+                                           data-target="#login-modal">{{ request.user.username }}</a></li>
                                     <li><a href="" data-toggle="modal" data-target="#login-modal">Кабінет</a></li>
                                 {% else %}
-                                    <li><a href="#">Увійти</a></li>
+                                    <li><a href="{% url "customer:login" %}">Увійти</a></li>
                                     <li><a href="{% url "customer:registration" %}">Реєстрація</a></li>
                                 {% endif %}
                             </ul>
@@ -44,10 +45,8 @@
                         <div class="aa-logo">
                             <a href="{% url "main:ProductList" %}">
                                 <span class="fa fa-shopping-cart"></span>
-                                <p>Андрій<strong>Саган</strong> <span>Любить великі хуі</span></p>
-{#                                <p>Штеп<strong>сель</strong> <span>єдиний норм магаз</span></p>#}
+                                <p>Штеп<strong>сель</strong> <span>єдиний норм магаз</span></p>
                             </a>
-
                         </div>
                         <!-- cart box -->
                         <div class="aa-cartbox">
