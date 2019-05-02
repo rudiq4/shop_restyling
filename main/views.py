@@ -57,5 +57,5 @@ def test(request):
     date_and_time = datetime.datetime.now()
     context = {'random_digit': randint,
                'date_and_time': date_and_time,
-               'names':names}
+               'names': names}
     return render(request, template, context)

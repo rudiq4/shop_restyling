@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.http import HttpResponseRedirect
 
-User = get_user_model()  #a
+User = get_user_model()  # a
 
 
 class RegistrationView(View):
@@ -61,3 +61,22 @@ class LoginView(View):
                 return HttpResponseRedirect('/')
         context = {'form': form}
         return render(self.request, self.template, context)
+
+
+# def LogoutView(request):
+#     if request.method == 'POST':
+#         logout(request)
+#         return HttpResponseRedirect("/")
+
+
+class AccountView(View):
+    template = 'auth/account.html'
+
+    def get(self, request, *args, **kwargs):
+        user = self.kwargs.get('user')  # ???
+        this_user = UserAccount.objects.get(user=User.obects.get(username=user))
+        context = {'this_user': this_user}
+        return render(self.request, self.template, context)
+
+
+

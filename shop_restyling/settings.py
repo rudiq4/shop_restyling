@@ -3,6 +3,7 @@ from secret import *
 
 DEBUG = True
 
+# ALLOWED_HOSTS = ['e8a719a7.ngrok.io', 'localhost']
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -16,6 +17,7 @@ INSTALLED_APPS = [
     'orders',
     'cart',
     'customer',
+    'blog',
 ]
 
 MIDDLEWARE = [

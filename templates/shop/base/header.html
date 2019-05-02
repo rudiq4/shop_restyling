@@ -20,9 +20,10 @@
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
                                 {% if request.user.is_authenticated %}
-                                    <li><a href="" data-toggle="modal"
-                                           data-target="#login-modal">{{ request.user.username }}</a></li>
-                                    <li><a href="" data-toggle="modal" data-target="#login-modal">Кабінет</a></li>
+                                    {#                                    <li><a href="" data-toggle="modal"#}
+                                    {#                                           data-target="#login-modal">{{ request.user.username }}</a></li>#}
+                                    {#                                    <li><a href="{% url "customer:account" request.user %}" data-toggle="modal" data-target="#login-modal">Кабінет</a></li>#}
+                                    <li><a href="{% url "customer:account" request.user %}">Kabinet</a></li>
                                 {% else %}
                                     <li><a href="{% url "customer:login" %}">Увійти</a></li>
                                     <li><a href="{% url "customer:registration" %}">Реєстрація</a></li>
@@ -115,17 +116,9 @@
                     <!-- Left nav -->
                     <ul class="nav navbar-nav">
                         <li><a href="{% url "main:ProductList" %}">Головна</a></li>
-                        <li><a href="#">Блог</a></li>
+                        <li><a href="{% url "blog:Blogg" %}">Блог</a></li>
                         <li><a href="#">Доставка</a></li>
-                        <li><a href="#">admin</a></li>
                         <li><a href="{% url "main:test" %}">TEST</a></li>
-                        {#                        <li><a href="#">Blog <span class="caret"></span></a>#}
-                        {#                            <ul class="dropdown-menu">#}
-                        {#                                <li><a href="#">Blog Style 1</a></li>#}
-                        {#                                <li><a href="#">Blog Style 2</a></li>#}
-                        {#                                <li><a href="#">Blog Single</a></li>#}
-                        {#                            </ul>#}
-                        {#                        </li>#}
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

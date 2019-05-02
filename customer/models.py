@@ -1,6 +1,7 @@
 from django.db import models
 from main.models import Product
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class UserAccount(models.Model):
@@ -15,4 +16,7 @@ class UserAccount(models.Model):
         verbose_name_plural = 'Користувачі'
 
     def __str__(self):
-        return self.user
+        return self.user.username
+
+    def get_absolute_url(self):
+        return reverse('customer:account', kwargs={'user': self.user.username})

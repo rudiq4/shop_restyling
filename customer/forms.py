@@ -13,6 +13,15 @@ class LoginForm(forms.Form):
         self.fields['username'].label = 'Логін'
         self.fields['password'].label = 'Пароль'
 
+    def clean(self):
+        username = self.cleaned_data['username']
+        password = self.cleaned_data['password']
+        if not User.objects.filter(username=username).exists():
+            raise forms.ValidationError('Користувача з таким іменем не існує, спробуйте ще раз!')
+        user = User.objects.get(username=username)
+        if not user.check_password(password):  # check_password -> bool(0/1)
+            raise forms.ValidationError('Пароль вказано не вірно')
+
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -28,7 +37,7 @@ class RegistrationForm(forms.ModelForm):
         self.fields['password'].label = 'Пароль'
         self.fields['password_check'].label = 'Повторіть пароль'
 
-    def clean(self):
+    def clean(self):  # Обработка исключений
         username = self.cleaned_data['username']
         password = self.cleaned_data['password']
         # email = self.cleaned_data['email']
