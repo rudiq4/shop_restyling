@@ -18,9 +18,10 @@
                                                 <article class="aa-blog-content-single">
                                                     <h4><a href="{{ post.get_absolute_url }}">{{ post.name }}</a></h4>
                                                     <figure class="aa-blog-img">
-                                                        <a href="{{ post.get_absolute_url }}"><img src="{{ product.image.url }}" alt=""></a>
+                                                        <a href="{{ post.get_absolute_url }}"><img
+                                                                src="{{ post.image.url }}" alt=""></a>
                                                     </figure>
-                                                    <p>{{ post.text }}</p>
+                                                    <p>{{ post.text|truncatechars:228 }}</p>
                                                     <div class="aa-article-bottom">
                                                         <div class="aa-post-author">
                                                             Автор : <a href="#">{{ post.user }}</a>
@@ -34,6 +35,9 @@
                                         {% endfor %}
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-9 paginators">
+                                {% include 'shop/base/paginator.html' with page=posts %}
                             </div>
                         </div>
                     </div>

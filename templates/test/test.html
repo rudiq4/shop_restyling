@@ -1,0 +1,14 @@
+{% extends "shop/base/base.html" %}
+{% load static %}
+{% block title %}
+    Test
+{% endblock %}
+{% block content %}
+    <h1>Begin</h1>
+    {% for pick in kartinki %}
+        <p>{{ pick.title }}</p>
+        <img src="{{ pick.img }}" alt="test">
+    {% endfor %}
+    <h2>End</h2>
+{% endblock %}
+

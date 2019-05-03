@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'cart',
     'customer',
     'blog',
+    'testgallery'
 ]
 
 MIDDLEWARE = [
@@ -91,4 +92,4 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # папка в якій зберігаються файли, загружені користувачем

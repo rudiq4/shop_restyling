@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 app_name = 'shop_restyling'
 
 urlpatterns = [
+    url(r'^sebek/', include('testgallery.urls', namespace='gallery')),
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^blog/', include('blog.urls', namespace='blog')),
