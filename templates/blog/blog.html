@@ -16,9 +16,9 @@
                                         {% for post in posts %}
                                             <div class="col-md-4 col-sm-4">
                                                 <article class="aa-blog-content-single">
-                                                    <h4><a href="#">{{ post.name }}</a></h4>
+                                                    <h4><a href="{{ post.get_absolute_url }}">{{ post.name }}</a></h4>
                                                     <figure class="aa-blog-img">
-                                                        <a href="#"><img src="{{ post.image }}" alt=""></a>
+                                                        <a href="{{ post.get_absolute_url }}"><img src="{{ product.image.url }}" alt=""></a>
                                                     </figure>
                                                     <p>{{ post.text }}</p>
                                                     <div class="aa-article-bottom">

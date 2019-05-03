@@ -1,11 +1,9 @@
 {% extends 'shop/base/base.html' %}
-
 {% load static %}
 {% block title %}
     {% if category %} {{ category.name }} {% else %} Головна {% endif %}
 {% endblock %}
 {% block content %}
-    <!-- catg header banner section -->
     <section id="aa-catg-head-banner">
         <img src="{% static 'images/bg.jpg' %}" alt="fashion img">
         <div class="aa-catg-head-banner-area">
@@ -16,9 +14,6 @@
             </div>
         </div>
     </section>
-    <!-- / catg header banner section -->
-
-    <!-- product category -->
     <section id="aa-product-category">
         <div class="container">
             <div class="row">
@@ -35,14 +30,19 @@
                         </div>
                         <div class="aa-product-catg-body">
                             <ul class="aa-product-catg">
-                                <!-- start single product item -->
                                 {% for product in products %}
                                     <li>
                                         <figure>
-                                            <a class="aa-product-img" href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "" %}{% endif %}" alt="polo shirt img" class="rudik"></a>
-                                            <a class="aa-add-card-btn" href="{{ product.get_absolute_url }}"><span class="fa fa-shopping-cart"></span>Деталі</a>
+                                            <a class="aa-product-img" href="{{ product.get_absolute_url }}"><img src="
+                                                    {% if product.image %}{{ product.image.url }}{% else %}{% static "" %}{% endif %}"
+                                                                                                                 alt="polo shirt img"
+                                                                                                                 class="rudik"></a>
+                                            <a class="aa-add-card-btn" href="{{ product.get_absolute_url }}"><span
+                                                    class="fa fa-shopping-cart"></span>Деталі</a>
                                             <figcaption>
-                                                <h4 class="aa-product-title"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
+                                                <h4 class="aa-product-title"><a
+                                                        href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                                                </h4>
                                                 <span class="aa-product-price">{{ product.price }}</span>
                                                 <p class="aa-product-descrip">{{ product.short_description }}</p>
                                             </figcaption>
@@ -58,7 +58,6 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
                     <aside class="aa-sidebar">
-                        <!-- single sidebar -->
                         <div class="aa-sidebar-widget">
                             <h3>Категорії</h3>
                             <ul class="aa-catg-nav">
@@ -72,12 +71,10 @@
                                 {% endfor %}
                             </ul>
                         </div>
-                        <!-- single sidebar -->
                     </aside>
                 </div>
             </div>
         </div>
     </section>
-    <!-- / product category -->
 {% endblock %}
 

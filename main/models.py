@@ -3,15 +3,8 @@ from django.urls import reverse
 
 
 class Category(models.Model):
-    name = models.CharField(
-        max_length=32,
-        db_index=True
-    )
-    slug = models.SlugField(
-        max_length=32,
-        db_index=True,
-        unique=True
-    )
+    name = models.CharField(max_length=32, db_index=True)
+    slug = models.SlugField(max_length=32, db_index=True, unique=True)
 
     class Meta:
         verbose_name = 'Категорія'
@@ -25,53 +18,16 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(
-        Category,
-        related_name='products',
-        verbose_name='Категорія',
-        on_delete=models.CASCADE
-    )
-    name = models.CharField(
-        max_length=256,
-        db_index=True,
-        verbose_name='Назва'
-    )
-    slug = models.SlugField(
-        max_length=256,
-        db_index=True,
-        unique=True
-    )
-    image = models.ImageField(
-        upload_to='prod_img/',
-        blank=True,
-        verbose_name='Зображення'
-    )
-    description = models.TextField(
-        blank=True,
-        verbose_name='Опис'
-    )
-    short_description = models.TextField(
-        max_length=245,
-        blank=True,
-        verbose_name='Короткий опис'
-    )
-    price = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        verbose_name='Ціна'
-    )
-    available = models.BooleanField(
-        default=True,
-        verbose_name='Наявність'
-    )
-    created = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Створено'
-    )
-    updated = models.DateTimeField(
-        auto_now=True,
-        verbose_name='Оновлено'
-    )
+    category = models.ForeignKey(Category, related_name='products', verbose_name='Категорія', on_delete=models.CASCADE)
+    name = models.CharField(max_length=256, db_index=True, verbose_name='Назва')
+    slug = models.SlugField(max_length=256, db_index=True, unique=True)
+    image = models.ImageField(upload_to='prod_img/', blank=True, verbose_name='Зображення')
+    description = models.TextField(blank=True, verbose_name='Опис')
+    short_description = models.TextField(max_length=245, blank=True, verbose_name='Короткий опис')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ціна')
+    available = models.BooleanField(default=True, verbose_name='Наявність')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Створено')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Оновлено')
 
     class Meta:
         ordering = ['name']
@@ -86,4 +42,3 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:ProductDetail', args=[self.id, self.slug])
-

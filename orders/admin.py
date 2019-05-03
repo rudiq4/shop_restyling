@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import Order, OrderItem
-# from django.core.urlresolvers import reverse
 from django.urls import reverse
 from django.utils.html import format_html
 
@@ -21,7 +20,6 @@ class OrderAdmin(admin.ModelAdmin):
                     'postal_code', 'city', 'paid', 'created', 'updated', ]
     list_filter = ['paid', 'created', 'updated']
     inLines = [OrderItemInLine]
-    # actions = [ExportToCSV]
 
 
 admin.site.register(Order, OrderAdmin)

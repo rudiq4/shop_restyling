@@ -4,6 +4,7 @@
     {{ product.name }}
 {% endblock %}
 {% block content %}
+
     <section id="aa-catg-head-banner">
         <img src="{% static 'images/bg.jpg' %}" alt="fashion img">
         <div class="aa-catg-head-banner-area">
@@ -64,7 +65,6 @@
                                 <li><a href="#description" data-toggle="tab">Повний опис</a></li>
                                 <li><a href="#review" data-toggle="tab">Відгуки</a></li>
                             </ul>
-
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="description">
                                     <p>{{ product.description }}</p>
