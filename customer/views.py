@@ -1,12 +1,11 @@
 from django.views import View
-from django import forms
 from .models import UserAccount
 from customer.forms import RegistrationForm, LoginForm
 from django.shortcuts import render
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.http import HttpResponseRedirect
 
-User = get_user_model()  # a
+User = get_user_model()
 
 
 class RegistrationView(View):
@@ -74,7 +73,7 @@ class AccountView(View):
 
     def get(self, request, *args, **kwargs):
         user = self.kwargs.get('user')  # ???
-        this_user = UserAccount.objects.get(user=User.obects.get(username=user))
+        this_user = UserAccount.objects.get(user=User.objects.get(username=user))
         context = {'this_user': this_user}
         return render(self.request, self.template, context)
 

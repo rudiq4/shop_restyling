@@ -5,7 +5,8 @@ from django.urls import reverse
 
 class Post(models.Model):
     name = models.CharField(max_length=32, verbose_name='Імя')
-    text = models.TextField(verbose_name='Текст')
+    short_text = models.TextField(max_length=228, verbose_name='Короткий текст(>228)')
+    full_text = models.TextField(verbose_name='Повний текст')
     slug = models.SlugField(db_index=True, unique=True)
     image = models.ImageField(upload_to='blog_img/', blank=True, verbose_name='Зображення')
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, verbose_name="Користувач")

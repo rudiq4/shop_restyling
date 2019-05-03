@@ -4,6 +4,20 @@
     Персональний кабінет
 {% endblock %}
 {% block content %}
-
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>{{ this_user }}</h2>
+                <hr>
+                <img src="{{ this_user.avatar.url }}"  width="70%" alt="avatar">
+            </div>
+            <div class="col-md-6">
+                <h2>Персональна інформація</h2>
+                <hr>
+                <p>Ім'я {{ this_user.first_name }}</p>
+                <p>Прізвище {{ this_user.last_name }}</p>
+                <p>Пошта {{ this_user.email }}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

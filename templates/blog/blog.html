@@ -21,7 +21,8 @@
                                                         <a href="{{ post.get_absolute_url }}"><img
                                                                 src="{{ post.image.url }}" alt=""></a>
                                                     </figure>
-                                                    <p>{{ post.text|truncatechars:228 }}</p>
+{#                                                    <p>{{ post.text|truncatechars:228 }}</p>#}
+                                                    <p>{{ post.short_text }}</p>
                                                     <div class="aa-article-bottom">
                                                         <div class="aa-post-author">
                                                             Автор : <a href="#">{{ post.user }}</a>

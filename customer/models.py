@@ -9,6 +9,7 @@ class UserAccount(models.Model):
     first_name = models.CharField(max_length=32, verbose_name="Ім'я")
     last_name = models.CharField(max_length=32, verbose_name="Прізвище")
     email = models.EmailField(verbose_name='e-mail')
+    avatar = models.ImageField(upload_to='user_photo/', verbose_name='Фото профілю')
     favorites = models.ManyToManyField(Product, verbose_name="Улюблені товари")
 
     class Meta:
