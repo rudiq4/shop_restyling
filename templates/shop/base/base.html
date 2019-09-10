@@ -15,7 +15,9 @@
     <link href="{% static 'css/sequence-theme.modern-slide-in.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+{#    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>#}
+    <link href='{% static 'fonts/Raleway-Regular.ttf' %}' rel='stylesheet' type='text/css'>
+    <link href='{% static 'fonts/Raleway-Regular-Italic.ttf' %}' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="{% static 'images/favicons.png' %}">
 </head>
 <body>
@@ -34,7 +36,7 @@
     <section id="header">
         {% include 'shop/base/header.html' %}
     </section>
-    <section id="content row" class="container">
+    <section id="content row" class="container-fluid">
         {% block content %}{% endblock %}
     </section>
 </div>

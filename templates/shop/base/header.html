@@ -14,10 +14,14 @@
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
                                 {% if request.user.is_authenticated %}
-                                    <li><a href="{% url "customer:account" request.user %}">Особистий кабінет</a></li>
+                                    <li><a href="{% url "customer:account" request.user %}">{{ user.username }}</a></li>
+                                    <li><a href="{% url "customer:logout" %}">Вихід</a></li>
                                 {% else %}
                                     <li><a href="{% url "customer:login" %}">Увійти</a></li>
                                     <li><a href="{% url "customer:registration" %}">Реєстрація</a></li>
+                                {% endif %}
+                                {% if request.user.is_authenticated and request.user.is_staff %}
+                                    <li>Admin OnLine</li>
                                 {% endif %}
                             </ul>
                         </div>

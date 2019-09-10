@@ -1,9 +1,9 @@
 from django.views import View
 from .models import UserAccount
 from customer.forms import RegistrationForm, LoginForm
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, authenticate, login, logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 User = get_user_model()
 
@@ -62,10 +62,9 @@ class LoginView(View):
         return render(self.request, self.template, context)
 
 
-# def LogoutView(request):
-#     if request.method == 'POST':
-#         logout(request)
-#         return HttpResponseRedirect("/")
+def logout_view(request):
+    logout(request)
+    return redirect("/")
 
 
 class AccountView(View):
@@ -76,6 +75,3 @@ class AccountView(View):
         this_user = UserAccount.objects.get(user=User.objects.get(username=user))
         context = {'this_user': this_user}
         return render(self.request, self.template, context)
-
-
-
