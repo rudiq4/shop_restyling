@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
+from django.shortcuts import render, get_object_or_404, render_to_response, HttpResponseRedirect
 from django.http import HttpResponse
-from .models import Category, Product
+from .models import Category, Product, Review
 from cart.forms import CartAddProductForm
+#  from .forms import AddReviewForm
+from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 import random
@@ -43,10 +45,23 @@ def product_list(request, category_slug=None):
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
     cart_product_form = CartAddProductForm()
+    reviews = product.review_set.all()
     template = 'shop/product/detail.html'
     return render_to_response(template,
                               {'product': product,
-                               'cart_product_form': cart_product_form})
+                               'cart_product_form': cart_product_form,
+                               'reviews': reviews})
+
+
+# def add_comment(request, id):
+#     if request.method != 'POST':
+#         form = AddReviewForm()
+#     else:
+#         form = AddReviewForm(request.POST)
+#         if form.is_valid():
+#             form.save()  # Зберігаємо форму в БД
+#             return HttpResponseRedirect(reverse('main'))  # Перенаправляємо Юзера на вказаний урл
+#     return render(request, 'new_vehicle.html', locals())
 
 
 def test(request):

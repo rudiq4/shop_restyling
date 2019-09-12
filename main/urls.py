@@ -10,6 +10,7 @@ urlpatterns = [
                   url(r'^$', views.product_list, name='ProductList'),
                   url(r'^(?P<category_slug>[-\w]+)/$', views.product_list, name='ProductListByCategory'),
                   url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.product_detail, name='ProductDetail'),
+                  # url(r'^comment/(?P<id>[0-9]+)/$', views.add_comment, name='add_comment'),
 
               ] \
               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
