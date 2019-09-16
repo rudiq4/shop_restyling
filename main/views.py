@@ -2,11 +2,12 @@ from django.shortcuts import render, get_object_or_404, render_to_response, Http
 from django.http import HttpResponse
 from .models import Category, Product, Review
 from cart.forms import CartAddProductForm
-#  from .forms import AddReviewForm
+from .forms import AddReviewForm
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 import random
+from django.views.generic import View
 
 
 def product_list(request, category_slug=None):
@@ -53,15 +54,29 @@ def product_detail(request, id, slug):
                                'reviews': reviews})
 
 
-# def add_comment(request, id):
-#     if request.method != 'POST':
-#         form = AddReviewForm()
-#     else:
+class AddReview(View):
+    def get(self, request):
+        form = AddReviewForm
+        return render(request, 'shop/product/add_review.html', context={'form':form})
+
+
+# def add_review(request):
+#     # if this is a POST request we need to process the form data
+#     if request.method == 'POST':
+#         # create a form instance and populate it with data from the request:
 #         form = AddReviewForm(request.POST)
+#         # check whether it's valid:
 #         if form.is_valid():
-#             form.save()  # Зберігаємо форму в БД
-#             return HttpResponseRedirect(reverse('main'))  # Перенаправляємо Юзера на вказаний урл
-#     return render(request, 'new_vehicle.html', locals())
+#             # process the data in form.cleaned_data as required
+#             # ...
+#             # redirect to a new URL:
+#             return HttpResponseRedirect('shop/product/list.html')
+#
+#     # if a GET (or any other method) we'll create a blank form
+#     else:
+#         form = AddReviewForm()
+#
+#     return render(request, 'name.html', {'form': form})
 
 
 def test(request):
