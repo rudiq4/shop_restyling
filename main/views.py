@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, render_to_response, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, render_to_response, HttpResponseRedirect, redirect
 from django.http import HttpResponse
 from .models import Category, Product, Review
 from cart.forms import CartAddProductForm
@@ -57,35 +57,13 @@ def product_detail(request, id, slug):
 class AddReview(View):
     def get(self, request):
         form = AddReviewForm
-        return render(request, 'shop/product/add_review.html', context={'form':form})
+        return render(request, 'shop/product/add_review.html', context={'form': form})
 
+    def post(self, request):
+        bound_form = AddReviewForm(request.POST)
 
-# def add_review(request):
-#     # if this is a POST request we need to process the form data
-#     if request.method == 'POST':
-#         # create a form instance and populate it with data from the request:
-#         form = AddReviewForm(request.POST)
-#         # check whether it's valid:
-#         if form.is_valid():
-#             # process the data in form.cleaned_data as required
-#             # ...
-#             # redirect to a new URL:
-#             return HttpResponseRedirect('shop/product/list.html')
-#
-#     # if a GET (or any other method) we'll create a blank form
-#     else:
-#         form = AddReviewForm()
-#
-#     return render(request, 'name.html', {'form': form})
+        if bound_form.is_valid():
+            new_review = bound_form.save()
+            return redirect(new_review)
+        return render(request, 'shop/product/add_review.html', context={'form':bound_form})
 
-
-def test(request):
-    print('Рандомна фраза яка буде в консолі')
-    template = 'shop/test.html'
-    randint = random.randint(0, 10)
-    names = ['Zenik', 'Orko', 'Misha', 'Slavko']
-    date_and_time = datetime.datetime.now()
-    context = {'random_digit': randint,
-               'date_and_time': date_and_time,
-               'names': names}
-    return render(request, template, context)

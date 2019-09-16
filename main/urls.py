@@ -9,7 +9,6 @@ app_name = 'main'
 
 urlpatterns = [
                   path('add_review/', AddReview.as_view(), name='add_review'),
-                  url(r'^test/$', views.test, name='test'),
                   url(r'^$', views.product_list, name='ProductList'),
                   url(r'^(?P<category_slug>[-\w]+)/$', views.product_list, name='ProductListByCategory'),
                   url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.product_detail, name='ProductDetail'),
