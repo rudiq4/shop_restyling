@@ -4,9 +4,8 @@ from .models import Category, Product, Review
 from cart.forms import CartAddProductForm
 from .forms import AddReviewForm
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import datetime
-import random
 from django.views.generic import View
 
 
@@ -64,6 +63,5 @@ class AddReview(View):
 
         if bound_form.is_valid():
             new_review = bound_form.save()
-            return redirect(new_review)
-        return render(request, 'shop/product/add_review.html', context={'form':bound_form})
-
+            return redirect('shop:ProductList')
+        return render(request, 'shop/product/add_review.html', context={'form': bound_form})

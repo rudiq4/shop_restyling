@@ -8,7 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ['product', 'user', 'created', 'text']
+    list_display = ['created', 'text', 'product', 'user']
 
 
 class ProductAdmin(admin.ModelAdmin):
