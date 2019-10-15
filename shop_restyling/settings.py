@@ -7,6 +7,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'smart_selects',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -18,6 +19,8 @@ INSTALLED_APPS = [
     'cart',
     'customer',
     'blog',
+    'books',
+    'test_app'
 ]
 
 MIDDLEWARE = [
@@ -91,4 +94,9 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # папка в якій зберігаються файли, загружені користувачем
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # папка в якій зберігаються файли, загружені
+
+JQUERY_URL = False
+
+USE_DJANGO_JQUERY = False
+

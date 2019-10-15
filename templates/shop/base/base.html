@@ -15,7 +15,7 @@
     <link href="{% static 'css/sequence-theme.modern-slide-in.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-{#    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>#}
+    {#    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>#}
     <link href='{% static 'fonts/Raleway-Regular.ttf' %}' rel='stylesheet' type='text/css'>
     <link href='{% static 'fonts/Raleway-Regular-Italic.ttf' %}' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="{% static 'images/favicons.png' %}">
@@ -23,11 +23,11 @@
 <body>
 
 <!-- LOADER -->
-{#<div id="wpf-loader-two">#}
-{#    <div class="wpf-loader-two-inner">#}
-{#        <span>Секунду..</span>#}
-{#    </div>#}
-{#</div>#}
+<div id="wpf-loader-two">
+    <div class="wpf-loader-two-inner">
+        <span>Секунду..</span>
+    </div>
+</div>
 <!-- / wpf loader Two -->
 <!-- SCROLL TOP BUTTON -->
 <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
@@ -43,7 +43,10 @@
 
 {% include 'shop/base/footer.html' %}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
 <script src="{% static 'JavaScript/bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'JavaScript/jquery.smartmenus.js' %}"></script>
 <script type="text/javascript" src="{% static 'JavaScript/jquery.smartmenus.bootstrap.js' %}"></script>

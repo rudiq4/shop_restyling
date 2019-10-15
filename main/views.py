@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, render_to_response, HttpResponseRedirect, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import Category, Product, Review
 from cart.forms import CartAddProductForm
 from .forms import AddReviewForm
@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import View
+import datetime
 
 
 def product_list(request, category_slug=None):
@@ -65,3 +66,19 @@ class AddReview(View):
             new_review = bound_form.save()
             return redirect('shop:ProductList')
         return render(request, 'shop/product/add_review.html', context={'form': bound_form})
+
+
+def hours_ahead(request, offset):
+    try:
+        offset = int(offset)
+    except ValueError:
+        raise Http404
+    dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
+    html = "<html><body>After %s hours will be %s </body></html>" % (offset, dt)
+    return HttpResponse(html)
+
+
+def calendar(request, name, year, month, day):
+    template = 'shop/test/test_template.html'
+    context = {'name': name, 'year': year, 'month': month, 'day': day}
+    return render(request, template, context)
